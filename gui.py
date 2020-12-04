@@ -6,23 +6,38 @@ class Checkbar(tk.Frame):
     def __init__(self, parent=None, picks=[], ):
         tk.Frame.__init__(self, parent)
         self.vars = []
-
-        cnt = 0
-
-        for pick in picks:
-            if cnt == 2:
-                cnt = 0
+        for idx,pick in enumerate(picks):
             var = tk.IntVar()
             chk = tk.Checkbutton(self, text=pick, variable=var)
-            chk.grid(row=1, column=cnt)
+
+            chk.grid(sticky="W", row=idx, column=0)
+    
+                
             self.vars.append(var)
-            cnt+=1
+
     def state(self):
         return map((lambda var: var.get()), self.vars)
 
+# Create a list of checkboxes
+class Entrybar(tk.Frame):
+    def __init__(self, parent=None, picks=[], ):
+        tk.Frame.__init__(self, parent)
+        self.vars = []
+        for idx,pick in enumerate(picks):
+            
+            Inputfield = tk.Entry(self, )
+
+            chk.grid(sticky="W", row=idx, column=0)
+    
+                
+            self.vars.append(var)
+
+    def state(self):
+        return map((lambda var: var.get()), self.vars)
 
 window = tk.Tk()
 window.title("Storygenerator")
+#window.geometry("500x500")
 
 # Define Label
 l_issueID = tk.Label( text="IssueID:")
@@ -42,6 +57,8 @@ e_labels = tk.Entry()
 e_reporter = tk.Entry()
 e_assignee = tk.Entry()
 
+#e_fields = Entrybar(window,["A","B","C""D])
+
 # Define Button
 b_load = tk.Button( text='Load Issue')
 b_addLabel = tk.Button( text='Add Label')
@@ -49,7 +66,7 @@ b_pushIssues = tk.Button( text='Generate Issues')
 
 
 # Define Checkbox
-chk_columns = Checkbar(window, ["CMN", "AMS", "CF", "SF"])
+chk_columns = Checkbar(window, ["CMN","AMS","CF","SF"])
 chk_issues = Checkbar(window,["Analysis","Prep Business","Prep Testdata","Order"])
 
 
@@ -80,8 +97,6 @@ b_pushIssues.grid(row=9, column=0, columnspan=3, padx=5, pady=5)
 # Checkbox
 chk_columns.grid(row=5,column=1)
 chk_issues.grid(row=7,column =1)
-
-print("Hallo")
 
 # loop window
 window.mainloop()
