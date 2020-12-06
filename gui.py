@@ -18,31 +18,19 @@ class Checkbar(tk.Frame):
     def state(self):
         return map((lambda var: var.get()), self.vars)
 
-# Create a list of checkboxes
 
-"""
-class Entrybar(tk.Frame):
-    def __init__(self, parent=None, picks=[], ):
-        tk.Frame.__init__(self, parent)
-        self.vars = []
-        for idx, pick in enumerate(picks):
 
-            Inputfield = tk.Entry(self, )
 
-            chk.grid(sticky="W", row=idx, column=0)
 
-            self.vars.append(var)
 
-    def state(self):
-        return map((lambda var: var.get()), self.vars)
-"""
 
+####################################### Definition ############################################
+
+#Define Root
 root = tk.Tk()
 root.title("Storygenerator")
 root.minsize(width="250", height="430")
 root.maxsize(width="250", height="430")
-
-####################################### Definition ############################################
 
 #Define Tabs
 tab_parent = ttk.Notebook(root)
